@@ -16,7 +16,9 @@ namespace DragonsLair
         public List<Team> teams = new List<Team>();
         public void ShowScore(string tournamentName)
         {
+
             Tournament t = tournamentRepository.GetTournament(tournamentName);
+            t.SetupTestRounds();
             Team[] teams = t.GetTeams().ToArray();
             int[] scores = new int[teams.Length];       
 
@@ -65,6 +67,7 @@ namespace DragonsLair
             int numberOfRounds = t.GetNumberOfRounds();
             Round lastRound = new Round();
             bool isRoundFinished;
+            t.SetupTestRounds();
 
             
 
@@ -129,7 +132,7 @@ namespace DragonsLair
                     }
                     t.AddRound(newRound);
 
-                    Console.WriteLine(
+                    Console.Write(
                     "0--------------------------------------------0",
                     "|           Turnering: VINTER TURNERING      |",
                     "|                   Runde 2                  |",

@@ -8,7 +8,10 @@ namespace TournamentLib
 
         private List<Match> matches = new List<Match>();
 
-        
+        public void setWinningTeam(Match m, Team team)
+        {
+
+        }
 
         
         public void AddMatch(Match m)
@@ -18,8 +21,15 @@ namespace TournamentLib
 
         public Match GetMatch(string teamName1, string teamName2)
         {
-            // TODO: Implement this method
+            foreach (var item in matches)
+            {
+                if((item.FirstOpponent.ToString() == teamName1 && item.SecondOpponent.ToString() == teamName2) || item.FirstOpponent.ToString() == teamName2 && item.SecondOpponent.ToString() == teamName1)
+                {
+                    return item;
+                }
+            }
             return null;
+
         }
 
         public bool IsMatchesFinished()

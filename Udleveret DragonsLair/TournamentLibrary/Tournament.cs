@@ -14,6 +14,13 @@ namespace TournamentLib
             Name = tournamentName;
         }
 
+
+        public void findTeam(string teamName)
+        {
+            
+        }
+
+
         public List<Team> GetTeams()
         {
             return teams;
