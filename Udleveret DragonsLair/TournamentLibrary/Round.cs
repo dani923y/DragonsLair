@@ -32,6 +32,20 @@ namespace TournamentLib
 
         }
 
+        public Match GetMatch(string team)
+        {
+
+            foreach (var item in matches)
+            {
+                if (item.FirstOpponent.ToString() == team || item.SecondOpponent.ToString() == team)
+                {
+                    return item;
+                }
+            }
+            return null;
+
+        }
+
         public bool IsMatchesFinished()
         {
             // TODO: Implement this method

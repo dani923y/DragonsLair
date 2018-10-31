@@ -67,7 +67,7 @@ namespace DragonsLair
             int numberOfRounds = t.GetNumberOfRounds();
             Round lastRound = new Round();
             bool isRoundFinished;
-            t.SetupTestRounds();
+         
 
             
 
@@ -158,9 +158,22 @@ namespace DragonsLair
 
         }
     
-        public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
+        public void SaveMatch(string tournamentName, int roundNumber, string winningTeam)
         {
-            // Do not implement this method
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            Round r = t.GetRound(roundNumber);
+            Match m = r.GetMatch(winningTeam);
+
+            if(m != null && m.Winner == null)
+            {
+                Team w = t.GetTeam(winningTeam);
+                m.Winner = w;
+            }
+            else
+            {
+                throw new SystemException("Failure");
+
+            }
         }
 
         private List<Team> ScrambleTeamsRandomly(List<Team> teams)

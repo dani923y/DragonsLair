@@ -15,9 +15,16 @@ namespace TournamentLib
         }
 
 
-        public void findTeam(string teamName)
+        public Team GetTeam(string teamName)
         {
-            
+            foreach (Team item in teams)
+            {
+                if (teamName == item.Name)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
 
 
