@@ -4,15 +4,38 @@ namespace TournamentLib
 {
     public class TournamentRepo
     {
-        private Tournament winterTournament = new Tournament("Vinter Turnering");
+        private List<Tournament> tournaments = new List<Tournament>();
 
         public Tournament GetTournament(string name)
         {
-            if (name == "Vinter Turnering")
+            Tournament t = new Tournament(name);
+            for (int i = 0; i < tournaments.Count; i++)
             {
-                return winterTournament;
+                if (tournaments[i] == t)
+                {
+                    return t;
+                }
             }
             return null;
+        }
+
+        public void AddTournament(string name)
+        {
+            Tournament t = new Tournament(name);
+            tournaments.Add(t);
+        }
+
+        public void RemoveTournament(string name)
+        {
+            Tournament t = new Tournament(name);
+            for (int i = 0; i < tournaments.Count; i++)
+            {
+                if (tournaments[i] == t)
+                {
+                    tournaments.Remove(tournaments[i]);
+                }
+            }
+           
         }
     }
 }

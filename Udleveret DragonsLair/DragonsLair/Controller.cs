@@ -14,11 +14,23 @@ namespace DragonsLair
         private Round round = new Round();
         public List<Team> ShowWinner = new List<Team>();
         public List<Team> teams = new List<Team>();
+
+
+        public void CreateTournament(string tournamentName)
+        {
+            tournamentRepository.AddTournament(tournamentName);
+        }
+
+        public void DeleteTournament(string tournamentName)
+        {
+            tournamentRepository.RemoveTournament(tournamentName);
+        }
+
         public void ShowScore(string tournamentName)
         {
 
             Tournament t = tournamentRepository.GetTournament(tournamentName);
-            t.SetupTestRounds();
+            //t.SetupTestRounds();
             Team[] teams = t.GetTeams().ToArray();
             int[] scores = new int[teams.Length];       
 

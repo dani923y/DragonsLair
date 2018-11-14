@@ -27,6 +27,12 @@ namespace DragonsLair
                     case "3":
                         SaveMatch();
                         break;
+                    case "4":
+                        CreateTournament();
+                        break;
+                    case "5":
+                        DeleteTournament();
+                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -42,6 +48,8 @@ namespace DragonsLair
             Console.WriteLine("1. Præsenter turneringsstilling");
             Console.WriteLine("2. Planlæg runde i turnering");
             Console.WriteLine("3. Registrér afviklet kamp");
+            Console.WriteLine("4. Opret turnering");
+            Console.WriteLine("5. Slet turnering");
             Console.WriteLine("");
             Console.WriteLine("0. Exit");
         }
@@ -52,7 +60,25 @@ namespace DragonsLair
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
         }
-        
+
+        private string CreateTournament()
+        {
+            Console.WriteLine();
+            Console.Write("Indtast navn på turnering: ");
+            string tournamentName = Console.ReadLine();
+            Console.Clear();
+            control.CreateTournament(tournamentName);
+        }
+
+        private string DeleteTournament()
+        {
+            Console.WriteLine();
+            Console.Write("Angiv navn på turnering: ");
+            string tournamentName = Console.ReadLine();
+            Console.Clear();
+            control.DeleteTournament(tournamentName);
+        }
+
         private void ShowScore()
         {
             Console.Write("Angiv navn på turnering: ");
