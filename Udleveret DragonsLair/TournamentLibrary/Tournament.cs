@@ -6,6 +6,7 @@ namespace TournamentLib
     {
         private List<Team> teams = new List<Team>();
         private List<Round> rounds = new List<Round>();
+      
 
         public string Name { get; private set; }
 
@@ -33,9 +34,25 @@ namespace TournamentLib
             return teams;
         }
 
-        public void AddTeam(Team team)
+        public void RemoveTeam(string name)
         {
-            teams.Add(team);
+            Team t = new Team(name);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Name == t.Name)
+                {
+                    teams.Remove(teams[i]);
+                }
+            }
+
+        }
+
+
+
+        public void AddTeam(string team)
+        {
+            Team t = new Team(team);
+            teams.Add(t);
         }
 
         public int GetNumberOfRounds()

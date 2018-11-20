@@ -35,7 +35,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestScheduleNewRoundWithOddNumbersOfTeams()
         {
-            currentTournament.AddTeam(new Team("The Andals")); // Add the nine'th team
+            Team team = new Team("The Andals");
+            //currentTournament.AddTeam(team); // Add the nine'th team
             Assert.AreEqual(9, currentTournament.GetTeams().Count);
 
             controller.ScheduleNewRound("Vinter Turnering", false);
@@ -47,7 +48,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestOddNumberOfTeamsGivesFreeRider()
         {
-            currentTournament.AddTeam(new Team("The Andals")); // Add the nine'th team
+            //currentTournament.AddTeam(new Team("The Andals")); // Add the nine'th team
             controller.ScheduleNewRound("Vinter Turnering", false);
             Assert.AreNotEqual(null, currentTournament.GetRound(0).FreeRider);
         }

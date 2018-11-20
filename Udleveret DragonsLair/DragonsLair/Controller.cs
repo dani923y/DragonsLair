@@ -16,6 +16,41 @@ namespace DragonsLair
         public List<Team> teams = new List<Team>();
 
 
+        public void AddTeamToTournament(string tournamentName, string teamName)
+        {
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            t.AddTeam(teamName);
+        }
+
+        public void RemoveTeamFromTournament(string tournamentName, string teamName)
+        {
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            t.RemoveTeam(teamName);
+        }
+
+        public void ShowTeams(string tournamentName)
+        {
+            Tournament t = tournamentRepository.GetTournament(tournamentName);
+            Team[] teamNames = t.GetTeams().ToArray();
+            for (int i = 0; i < teamNames.Length; i++)
+            {
+                Console.WriteLine((i + 1) + ". " + teamNames[i].Name + "\n");
+            }
+        }
+
+
+        public void ShowTournaments()
+        {
+            Tournament[] tournaments = tournamentRepository.ShowTournaments().ToArray();
+            for (int i = 0; i < tournaments.Length; i++)
+            {
+                Console.WriteLine((i+1) + ". " + tournaments[i].Name + "\n");
+            }
+           
+            
+        } 
+
+
         public void CreateTournament(string tournamentName)
         {
             tournamentRepository.AddTournament(tournamentName);

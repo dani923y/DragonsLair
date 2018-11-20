@@ -11,12 +11,17 @@ namespace TournamentLib
             Tournament t = new Tournament(name);
             for (int i = 0; i < tournaments.Count; i++)
             {
-                if (tournaments[i] == t)
+                if (tournaments[i].Name == t.Name)
                 {
-                    return t;
+                    return tournaments[i];
                 }
             }
             return null;
+        }
+
+        public List<Tournament> ShowTournaments()
+        {
+            return tournaments;
         }
 
         public void AddTournament(string name)
@@ -30,7 +35,7 @@ namespace TournamentLib
             Tournament t = new Tournament(name);
             for (int i = 0; i < tournaments.Count; i++)
             {
-                if (tournaments[i] == t)
+                if (tournaments[i].Name == t.Name)
                 {
                     tournaments.Remove(tournaments[i]);
                 }

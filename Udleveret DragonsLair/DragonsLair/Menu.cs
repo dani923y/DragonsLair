@@ -33,6 +33,18 @@ namespace DragonsLair
                     case "5":
                         DeleteTournament();
                         break;
+                    case "6":
+                        ShowTournaments();
+                        break;
+                    case "7":
+                        AddTeamToTournament();
+                        break;
+                    case "8":
+                        RemoveTeamFromTournament();
+                        break;
+                    case "9":
+                        ShowTeamsFromTournament();
+                        break;
                     default:
                         Console.WriteLine("Ugyldigt valg.");
                         Console.ReadLine();
@@ -50,9 +62,15 @@ namespace DragonsLair
             Console.WriteLine("3. Registrér afviklet kamp");
             Console.WriteLine("4. Opret turnering");
             Console.WriteLine("5. Slet turnering");
+            Console.WriteLine("6. Vis registreret turneringer");
+            Console.WriteLine("7. Tilføj hold til turnering");
+            Console.WriteLine("8. Slet hold fra turnering");
+            Console.WriteLine("9. Vis hold fra turnering");
             Console.WriteLine("");
             Console.WriteLine("0. Exit");
         }
+
+        
 
         private string GetUserChoice()
         {
@@ -61,7 +79,44 @@ namespace DragonsLair
             return Console.ReadLine();
         }
 
-        private string CreateTournament()
+        private void ShowTeamsFromTournament()
+        {
+            Console.WriteLine();
+            Console.Write("Indtast navn på turnering: ");
+            string tournamentName = Console.ReadLine();
+            Console.Clear();
+            control.ShowTeams(tournamentName);
+        }
+
+        private void AddTeamToTournament()
+        {
+            Console.WriteLine();
+            Console.Write("Indtast navn på turnering: ");
+            string tournamentName = Console.ReadLine();
+            Console.WriteLine("Indtast navn på hold: ");
+            string teamName = Console.ReadLine();
+            Console.Clear();
+            control.AddTeamToTournament(tournamentName, teamName);
+        }
+
+        private void RemoveTeamFromTournament()
+        {
+            Console.WriteLine();
+            Console.Write("Indtast navn på turnering: ");
+            string tournamentName = Console.ReadLine();
+            Console.WriteLine("Indtast navn på hold: ");
+            string teamName = Console.ReadLine();
+            Console.Clear();
+            control.RemoveTeamFromTournament(tournamentName, teamName);
+        }
+
+        private void ShowTournaments()
+        {
+            Console.Clear();
+            control.ShowTournaments();
+        }
+
+        private void CreateTournament()
         {
             Console.WriteLine();
             Console.Write("Indtast navn på turnering: ");
@@ -70,7 +125,7 @@ namespace DragonsLair
             control.CreateTournament(tournamentName);
         }
 
-        private string DeleteTournament()
+        private void DeleteTournament()
         {
             Console.WriteLine();
             Console.Write("Angiv navn på turnering: ");

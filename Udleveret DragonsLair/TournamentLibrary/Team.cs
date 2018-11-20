@@ -2,7 +2,7 @@
 
 namespace TournamentLib
 {
-    public class Team
+    public class Team 
     {
         public string Name { get; set; }
 

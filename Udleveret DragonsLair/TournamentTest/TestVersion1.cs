@@ -11,13 +11,17 @@ namespace TournamentTest
         public class DragonsLairTests
         {
             Tournament currentTournament;
+            TournamentRepo tr;
+        
 
             [TestInitialize]
             public void SetupForTest()
             {
                 currentTournament = new Tournament("Vinter Turnering");
                 currentTournament.SetupTestRounds();
+
             }
+
 
             [TestMethod]
             public void TournamentHasEvenNumberOfTeams()
